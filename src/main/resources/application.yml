@@ -1,0 +1,9 @@
+# TODO: Create variable for db host, username, and password
+spring:
+    jpa:
+      hibernate:
+        ddl-auto: update # // create, none, update
+    datasource:
+      url: jdbc:mysql://localhost:3306/blogr
+      username: root
+      password:
