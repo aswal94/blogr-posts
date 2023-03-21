@@ -1,5 +1,6 @@
 package com.qwetzal.blogr.blog.controller;
 
+import com.qwetzal.blogr.blog.api.CategoryApi;
 import com.qwetzal.blogr.blog.dto.CategoryRequestDto;
 import com.qwetzal.blogr.blog.entitiy.Category;
 import com.qwetzal.blogr.blog.services.CategoryService;
@@ -17,7 +18,7 @@ public class CategoryController implements CategoryApi {
     private CategoryService categoryService;
 
     @GetMapping(value="/")
-    List<Category> getCategories(){
+    public ResponseEntity<List<Category>> getCategories(){
 
         return new ResponseEntity<>(categoryService.getCategories(), HttpStatus.OK);
     }
