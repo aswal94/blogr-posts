@@ -1,24 +1,31 @@
 package com.qwetzal.blogr.blog.controller;
 
+import com.qwetzal.blogr.blog.dto.CategoryRequestDto;
 import com.qwetzal.blogr.blog.entitiy.Category;
 import com.qwetzal.blogr.blog.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value="/categories")
-public class CategoryController {
+public class CategoryController implements CategoryApi {
     @Autowired
     private CategoryService categoryService;
 
     @GetMapping(value="/")
     List<Category> getCategories(){
 
-        return categoryService.getCategories();
+        return new ResponseEntity<>(categoryService.getCategories(), HttpStatus.OK);
+    }
+
+    @Override
+    @PostMapping(value="/")
+    public Category saveCategory(@RequestBody CategoryRequestDto categoryDto){
+        return categoryService.saveCategory(categoryDto);
     }
 
 }

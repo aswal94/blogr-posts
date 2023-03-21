@@ -35,17 +35,18 @@ public class PostServiceImpl implements PostService {
     public Post savePost(PostRequestDto postRequestDto) {
         logger.info("savePost()");
         logger.debug("Post Request: {{}}", postRequestDto);
+        logger.debug("Post categories: {{}}", postRequestDto.getCategories());
 
-        List<Category> foundCategoriesInDb = categoryRepository
-                .getCategoriesByName(postRequestDto.getCategories());
+//        List<Category> foundCategoriesInDb = categoryRepository
+//                .getCategoriesByName(postRequestDto.getCategories());
+//
+//        List<Long> categoriesIdInDb = foundCategoriesInDb.stream()
+//                .mapToLong(Category::getId)
+//                .boxed()
+//                .toList();
 
-        List<Long> categoriesIdInDb = foundCategoriesInDb.stream()
-                .mapToLong(Category::getId)
-                .boxed()
-                .toList();
-
-        Set<String> uniqueCategoriesFromRequest = Arrays.stream(postRequestDto.getCategories())
-                .collect(Collectors.toCollection(HashSet::new));
+//        Set<String> uniqueCategoriesFromRequest = postRequestDto.getCategories().stream().
+//                .collect(Collectors.toCollection(HashSet::new));
 
         // A - B
 
@@ -56,11 +57,11 @@ public class PostServiceImpl implements PostService {
 
 
 
+//        long[] categoriesIds = categoriesIdInDb.stream().mapToLong(id -> id).toArray();
 
 
 
-
-        String[] tags = postRequestDto.getTags();
+        List<String> tags = postRequestDto.getTags();
 
 
         // Mapping postRequestDto dto -> post
@@ -68,7 +69,7 @@ public class PostServiceImpl implements PostService {
         post.setTitle(postRequestDto.getTitle());
         post.setSlug(SlugUtility.generateSlug(postRequestDto.getTitle()));
         post.setBody(postRequestDto.getBody());
-        //post.setCategories(arrCategories);
+        post.setCategories(null);
         post.setTags(tags);
 
         return postRepository.save(post);

@@ -4,9 +4,11 @@ import com.qwetzal.blogr.blog.entitiy.Tag;
 import com.qwetzal.blogr.blog.repositories.TagRepository;
 import com.qwetzal.blogr.blog.services.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TagServiceImpl implements TagService {
 
     @Autowired

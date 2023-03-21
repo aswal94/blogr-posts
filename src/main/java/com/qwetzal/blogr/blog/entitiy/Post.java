@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,8 +29,9 @@ public class Post {
     @Column(name = "categories")
     private long[] categories;
 
-    @Column(name="tags")
-    private String[] tags;
+    @ElementCollection
+    @Column(name = "tags")
+    public List<String> tags = new ArrayList<>();
 
     @Column(name = "user_id")
     private int userId;
