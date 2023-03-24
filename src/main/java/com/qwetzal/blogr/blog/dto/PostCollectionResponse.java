@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PostCollectionResponse {
 
-    public PostCollectionResponse(List<Post> ){
+    public PostCollectionResponse(List<Post> posts){
 
     }
     List<Post> data;
