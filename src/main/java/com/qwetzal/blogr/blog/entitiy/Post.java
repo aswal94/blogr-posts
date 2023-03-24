@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,12 +25,13 @@ public class Post {
     @Column(name = "body")
     private String body;
 
+    @ManyToMany
     @Column(name = "categories")
-    private long[] categories;
+    private List<Category> categories;
 
-    @ElementCollection
+    @ManyToMany
     @Column(name = "tags")
-    public List<String> tags = new ArrayList<>();
+    public List<Tag> tags;
 
     @Column(name = "user_id")
     private int userId;

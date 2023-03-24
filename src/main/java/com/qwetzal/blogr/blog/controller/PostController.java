@@ -23,6 +23,7 @@ public class PostController implements PostApi {
 
     @GetMapping(value = "/")
     public ResponseEntity<List<Post>> getPosts() {
+
         List<Post> postList = postService.getPosts();
         return new ResponseEntity<List<Post>>(postList, HttpStatus.OK);
     }
