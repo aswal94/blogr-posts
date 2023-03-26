@@ -1,0 +1,14 @@
+# TODO: Create variable for db host, username, and password
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update # // create, none, update
+  datasource:
+    url: jdbc:mysql://db4free.net:3306/blogger_test
+    username: blogger_admin
+    password: ccjM!gZxji7uWF#
+server:
+  port: 8090
+logging:
+  level:
+    root: DEBUG

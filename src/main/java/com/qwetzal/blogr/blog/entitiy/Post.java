@@ -26,11 +26,19 @@ public class Post {
     private String body;
 
     @ManyToMany
-    @Column(name = "categories")
+    @JoinTable(
+            name = "post_categories",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private List<Category> categories;
 
     @ManyToMany
-    @Column(name = "tags")
+    @JoinTable(
+            name = "post_tags",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
     public List<Tag> tags;
 
     @Column(name = "user_id")
